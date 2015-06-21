@@ -1,4 +1,4 @@
-gender-swapper
+gender-swapper 
 -------
 
 A simple tool that swaps genders in written English text. 

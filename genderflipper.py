@@ -175,3 +175,4 @@ def part_of_speech(word):
 	response_page = response.read()
 
 	return response_page[-5:-3] == "NN" or response_page[-5:-3] == "RB" or response_page[-6:-3] == "NNS"
+	
