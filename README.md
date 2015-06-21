@@ -5,7 +5,7 @@ A simple tool that swaps genders in written English text.
 
 Uses the online natural language [Text Processing API] (http://text-processing.com).
 
-Meant to study how gender-specific the treatment of a character is in a given written work. Closely analyzing a gender swapped text often helps provide a better understanding of what plot elements are tied stringly to the character's gender. Analyzing multiple works by one author can help generalize about any gender bias in his or her writing.
+Meant to study how gender-specific the treatment of a character is in a given written work. Closely analyzing a gender swapped text often helps provide a better understanding of what plot elements are tied strongly to the character's gender. Analyzing multiple works by one author can help generalize any gender bias in his or her writing.
 
 ## Usage
 
