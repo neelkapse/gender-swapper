@@ -26,7 +26,8 @@ gender_flip = {
 	'waiter': 'waitress',
 	'fireman': 'firefighter',
 	'policeman': 'policewoman',
-	'mailman': 'mailwoman', # Quite interesting! no female equivalent for mailman!
+	# Quite interesting! no female equivalent for mailman!
+	'mailman': 'mailwoman', 
 	'salesman':	'saleswoman',
 	'blond': 'blonde',
 	'masseur': 'masseuse',
@@ -56,8 +57,11 @@ def flip_file(filename, names):
 	return output_text
 
 def flip(text, names):
-	case_switch_dict = {} 	# A dictionary of indexes at which case needs to be switched, and the case to be switched to.
-							# 1: Title , 2: UPPER
+	
+	# A dictionary of indexes at which case needs to be switched, and the case 
+	# to be switched to.
+	# 1: Title , 2: UPPER
+	case_switch_dict = {} 	
 
 	input_list = text.split()
 
@@ -72,15 +76,17 @@ def flip(text, names):
 	i = 0
 	while i < k: 			
 		for c in punctuation:
-			if len(input_list[i]) > 1: 						# ensure that the punctuation character is not checked for punctuation
+			# ensure that the punctuation character is not checked for punctuation
+			if len(input_list[i]) > 1: 						
 				if input_list[i].startswith(c):
 					input_list.insert(i, c)
-					i = i+1									# increment i by only one so that the same word is checked again for the "' case
-					input_list[i] = input_list[i][1:]		# slice to get all characters except first
+					# increment i by only one so that the same word is checked again for the "' case
+					i = i+1									
+					input_list[i] = input_list[i][1:]
 					k = k+1
 				elif input_list[i].endswith(c):
 					input_list.insert(i+1, c)
-					input_list[i] = (input_list[i])[:-1]	# slice to get all characters except last
+					input_list[i] = (input_list[i])[:-1]
 					i = i-1
 					k = k+1
 		i = i+1
@@ -89,7 +95,10 @@ def flip(text, names):
 		s = input_list[i]
 		if s.istitle():
 			case_switch_dict[i] = 1
-			input_list[i] = s.lower() 		# only switch words that are in one of the two cases; prevents "iPod" and similar from being changed. Assumes that no gender-specific word will have odd case structure.
+			# only switch words that are in one of the two cases; prevents 
+			# "iPod" and similar from being changed. Assumes that no 
+			# gender-specific word will have odd case structure.
+			input_list[i] = s.lower() 		
 		elif s.isupper():
 			case_switch_dict[i] = 2
 			input_list[i] = s.lower()
@@ -103,10 +112,12 @@ def flip(text, names):
 			output_list.append("his")
 			flip = True
 		elif s == "her":
-			if (not input_list[i+2] == ' ') and part_of_speech(input_list[i+2]): 	# if followed by NN, NNS, or RB), use "his"
+			# if followed by NN, NNS, or RB), use "his"
+			if (not input_list[i+2] == ' ') and part_of_speech(input_list[i+2]): 	
 				output_list.append("his")
 				flip = True
-			else:									# else use "him"
+			# else use "him"
+			else:									
 				output_list.append("him")
 				flip = True
 		elif s == "him":
@@ -148,8 +159,6 @@ def flip(text, names):
 			output_list[i] = output_list[i].title()
 		elif (i in case_switch_dict) and (case_switch_dict[i] == 2):
 			output_list[i] = output_list[i].upper()
-
-	
 
 	output_text = ''
 	for s in output_list:

@@ -28,8 +28,7 @@ flip_file("input.txt", names)
 from genderflipper import flip, flip_file
 
 names = {'sherlock': 'jane'}
-flip("To Sherlock Holmes she is always THE woman. I have seldom heard
-him mention her under any other name.", names)
+flip("To Sherlock Holmes she is always THE woman.", names)
 
 ```
 
